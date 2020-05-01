@@ -1,0 +1,38 @@
+%Este Ejemplo manipula un cubo en 3 dimensiones
+%Marzo 2019
+close;
+L1=1; L2=1; L12=1; ww=1
+largoc=L1+2*L12; Color='r'; anchoc=ww;
+
+Camion=CreaCuadro3(largoc,anchoc,Color,4);
+largor=L2; ww2=ww/2; anchor=ww2;
+Remolque=CreaCuadro3(largor,anchor,'b',4);
+xlabel('x'); ylabel('y');
+grid
+pause(1)
+RotaCuadro(Remolque,translh([-(largoc/2+largor/2),0,0]))
+pause(1)
+RotaCuadro(Remolque,translh([(L1/2),0,0]))
+RotaCuadro(Camion,translh([(L1/2),0,0]))
+
+%Ya qued+o defindo el auto y remolque
+x1a=0; y1a=0;
+N=size(X1)
+y1max=50; x1max=120;
+v=[0,x1max,0,y1max];
+axis(v);
+hold on
+for i=1:N(1)
+    x1=X1(i,2); y1=Y1(i,2);
+    Tp=translh([x1-x1a,y1-y1a,0])
+    x1a=x1; y1a=y1;
+    RotaCuadro(Remolque,Tp)
+    RotaCuadro(Camion,Tp)
+    X11(i)=x1; Y11(i)=y1;
+    plot(X11,Y11)
+    pause(0.5)
+end
+    
+
+
+
